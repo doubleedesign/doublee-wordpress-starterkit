@@ -1,0 +1,43 @@
+node_modules
+local-xdebuginfo.php
+conf
+app/public/fw-*
+app/public/wp-content/db-error.php
+
+# Wordpress - ignore core, configuration, examples, uploads and logs.
+# https://github.com/github/gitignore/blob/main/WordPress.gitignore
+
+# Core
+#
+# Note: if you want to stage/commit WP core files
+# you can delete this whole section/until Configuration.
+/app/public/wp-admin/
+/app/public/wp-content/index.php
+/app/public/wp-content/languages
+/app/public/wp-content/plugins/index.php
+/app/public/wp-content/themes/index.php
+/app/public/wp-includes/
+/app/public/index.php
+/app/public/license.txt
+/app/public/readme.html
+/app/public/wp-*.php
+/app/public/xmlrpc.php
+
+# Configuration
+wp-config.php
+
+# Uploads
+/wp-content/uploads/
+
+# Log files
+logs
+*.log
+
+# htaccess
+/.htaccess
+/app/public/.htaccess
+
+# Plugins
+/app/public/wp-content/plugins/advanced-custom-fields-pro
+/app/public/wp-content/plugins/tinymce-advanced
+

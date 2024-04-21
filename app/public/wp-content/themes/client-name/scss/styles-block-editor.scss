@@ -1,0 +1,32 @@
+@import '../node_modules/@doubleedesign/hover.css/hover';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap');
+@import 'fonts';
+@import 'variables';
+// No need to load the full Bootstrap grid here because the parent theme should be loading it
+@import '../../doublee-foundation-theme/common/scss/core/bootstrap-functions';
+@import '../../doublee-foundation-theme/common/scss/core/grid/mixins/breakpoints';
+@import '../../doublee-foundation-theme/common/scss/core/functions';
+@import '../../doublee-foundation-theme/common/scss/core/mixins';
+@import 'colours';
+@import 'typography';
+//@import 'common/*';
+//@import '../components/blocks/common';
+//@import '../components/blocks/**/*';
+
+.block-editor-block-list__block {
+	@each $colour, $value in $colours {
+		&.has-#{$colour}-background-color {
+			& + .has-#{$colour}-background-color {
+				.block {
+					padding-top: 0;
+				}
+			}
+
+			&:has(+ .has-#{$colour}-background-color) {
+				.block {
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+}

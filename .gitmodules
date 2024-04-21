@@ -1,0 +1,13 @@
+[submodule "app/public/wp-content/themes/doublee-foundation-theme"]
+	path = app/public/wp-content/themes/doublee-foundation-theme
+	url = https://github.com/doubleedesign/doublee-foundation-theme
+[submodule "app/public/wp-content/plugins/gutenberg-doublee"]
+	path = app/public/wp-content/plugins/gutenberg-doublee
+	url = https://github.com/doubleedesign/gutenberg-doublee
+	branch = release
+[submodule "app/public/wp-content/plugins/doublee-base-plugin"]
+	path = app/public/wp-content/plugins/doublee-base-plugin
+	url = https://github.com/doubleedesign/doublee-base-plugin
+[submodule "app/public/wp-content/plugins/doublee-breadcrumbs"]
+	path = app/public/wp-content/plugins/doublee-breadcrumbs
+	url = https://github.com/doubleedesign/breadcrumbs-doublee
