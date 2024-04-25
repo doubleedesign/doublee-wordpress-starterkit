@@ -48,8 +48,9 @@ debug.log
 local-xdebuginfo.php
 app/public/
 ```
-4. Do an initial commit
+4. Do an initial commit 
 ```
+git add .gitignore
 git commit -m "Initial commit"
 ```
 6. Allow pulling this repo into the non-empty install directory by adding it as the upstream
