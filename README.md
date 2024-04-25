@@ -1,10 +1,16 @@
 # Double-E Design WordPress site blueprint
 
 ## Included as submodules
-- Parent theme (for block-based sites)
-- Customised block editor plugin (minor alterations and additions, updated with official plugin periodically)
-- Base plugin of my common customisations
-- Breadcrumbs plugin
+### Common to both branches:
+- [Base plugin of my common customisations](https://github.com/doubleedesign/doublee-base-plugin)
+- [Breadcrumbs plugin](https://github.com/doubleedesign/doublee-breadcrumbs)
+
+### Classic branch:
+- [Classic Editor](https://github.com/WordPress/classic-editor)
+
+### Block Editor branch:
+- [Parent theme (for block-based sites)](https://github.com/doubleedesign/doublee-foundation-theme)
+- [Customised block editor plugin](https://github.com/doubleedesign/doublee-gutenberg) (minor alterations and additions, updated with official plugin periodically)
 
 ## Included starterkit for individual sites
 - Client theme boilerplate (for block-based sites; integrating [Classic theme](https://github.com/doubleedesign/doublee-theme-starter-kit-classic) option is in the roadmap)
@@ -14,15 +20,31 @@
 
 ### Installing into fresh Local site
 1. Initialise it as a Git repo `git init`
-2. Copy the `.gitignore` file from this repo 
+2. Copy the `.gitignore` file from this repo and modify as needed
 3. Do an initial commit (`git commit -m "Initial commit"`)
-4. `git remote add origin https://github.com/doubleedesign/doublee-wordpress-starterkit` to allow pulling this repo into the non-empty install directory
-5. `git pull origin master --allow-unrelated-histories` to pull in this main repo
-6. `git submodule update --init` to pull in the submodules
+4. Allow pulling this repo into the non-empty install directory:
+```
+git remote add upstream https://github.com/doubleedesign/doublee-wordpress-starterkit
+```
+5. Pull in this main repo with either:
+```
+git pull upstream classic --allow-unrelated-histories
+```
+```
+git pull upstream blocks --allow-unrelated-histories
+```
+
+6. Pull in the submodules for your chosen branch with:
+```
+git submodule update --init
+```
 
 ### Site-level steps I hope to automate (but for now, are manual)
 
-#### Theme:
+#### Classic theme:
+Still to come. Until then, fork the theme and follow the instructions in its README.
+
+#### Block-based theme:
 1. Case-sensitive find-and-replace in `themes/client-name`
 2. Rename `client-name` theme folder
 3. Get latest versions of [vue.esm-browser](https://unpkg.com/browse/vue@3.4.23/dist/) (from then select the latest version from that link) and [Vue SFC loader](https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js) for client theme and update the latter's version in `inc/frontend/class-frontend.php`

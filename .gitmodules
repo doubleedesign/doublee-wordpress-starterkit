@@ -10,4 +10,4 @@
 	url = https://github.com/doubleedesign/doublee-base-plugin
 [submodule "app/public/wp-content/plugins/doublee-breadcrumbs"]
 	path = app/public/wp-content/plugins/doublee-breadcrumbs
-	url = https://github.com/doubleedesign/breadcrumbs-doublee
+	url = https://github.com/doubleedesign/doublee-breadcrumbs
