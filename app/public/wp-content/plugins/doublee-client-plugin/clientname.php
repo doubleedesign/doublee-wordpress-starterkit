@@ -39,21 +39,3 @@ register_uninstall_hook(__FILE__, 'uninstall_clientname');
 
 // Load and run the rest of the plugin
 new ClientName();
-
-
-/**
- * Log actions and filters that are run.
- * For debugging purposes only; comment out when not in use!
- * @wp-hook
- *
- * @return void
- */
-function doublee_log_all_actions(): void {
-	foreach($GLOBALS['wp_actions'] as $item => $count) {
-		error_log(print_r($item, true));
-	}
-	foreach($GLOBALS['wp_filter'] as $item => $count) {
-		error_log(print_r($item, true));
-	}
-}
-//add_action('shutdown', 'doublee_log_all_actions');
