@@ -1,0 +1,79 @@
+.site-footer {
+	@include gutter-padding-top(1);
+	font-family: $body-font-family;
+
+	&__nav {
+
+		&__list {
+			text-align: center;
+
+			@include media-breakpoint-up(md) {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			&__item {
+				display: block;
+				padding: map-get($spacing, 'xs');
+				font-weight: map-get($font-weights, 'bold');
+				font-size: map-get($font-sizes, 'xs');
+				text-transform: uppercase;
+
+				@include media-breakpoint-up(lg) {
+					padding: map-get($spacing, 'sm');
+				}
+
+				a:not(.btn) {
+					display: block;
+					text-decoration: none;
+					line-height: 2;
+
+					&:before {
+						height: 2px;
+						bottom: 0;
+					}
+				}
+
+				&--current-menu-item {
+					@each $colour, $value in $colours {
+						.bg-#{$colour} & {
+							a:not(.btn) {
+								color: color-contrast($value);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__socials {
+		text-align: center;
+	}
+
+	&__fineprint {
+		@include gutter-padding-top(0.5);
+		@include gutter-padding-bottom(0.5);
+		@include gutter-margin-top(1);
+		text-align: center;
+
+		p {
+			font-size: map-get($font-sizes, 'xs');
+			margin: map-get($spacing, 'sm');
+		}
+
+		small {
+			display: block;
+			font-size: 0.75em;
+			padding: map-get($spacing, 'sm');
+			opacity: 0.6;
+			transition: opacity 0.2s ease;
+
+			&:hover, &:focus-within {
+				opacity: 1;
+			}
+		}
+	}
+
+}
