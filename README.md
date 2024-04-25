@@ -10,10 +10,10 @@
 
 ### Block Editor branch:
 - [Parent theme (for block-based sites)](https://github.com/doubleedesign/doublee-foundation-theme)
-- [Customised block editor plugin](https://github.com/doubleedesign/doublee-gutenberg) (minor alterations and additions, updated with official plugin periodically)
+- [Customised block editor plugin](https://github.com/doubleedesign/doublee-gutenberg) (minor alterations and additions, updated with official plugin periodically); be sure to track the `release` branch of this repo to copy down just what's required for production
 
 ## Included starterkit for individual sites
-- Client theme boilerplate (for block-based sites; integrating [Classic theme](https://github.com/doubleedesign/doublee-theme-starter-kit-classic) option is in the roadmap)
+- Client theme boilerplate (for block-based sites)
 - Client plugin boilerplate
 
 ## Initial setup
