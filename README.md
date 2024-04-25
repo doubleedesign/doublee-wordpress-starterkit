@@ -42,7 +42,17 @@ git submodule update --init
 ### Site-level steps I hope to automate (but for now, are manual)
 
 #### Classic theme:
-Still to come. Until then, fork the theme and follow the instructions in its README.
+1. Clone the theme 
+```
+cd app/public/wp-content/themes
+git clone https://github.com/doubleedesign/doublee-theme-starter-kit-classic
+```
+2. Unlink it from the main repo
+```
+git remote rm origin
+```
+
+More to come. Until then, follow the setup  steps in the theme's README as well as the manual setup steps below.
 
 #### Block-based theme:
 1. Case-sensitive find-and-replace in `themes/client-name`
