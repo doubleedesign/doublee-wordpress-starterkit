@@ -1,5 +1,6 @@
 # Double-E Design WordPress site blueprint
 
+- [Prerequisites](#prerequisites)
 - [Common submodules](#common-submodules)
 - [Starterkits for individual sites](#starterkits-for-individual-sites)
 - [Initial setup](#initial-setup)
@@ -8,6 +9,16 @@
   - [General manual setup steps](#general-manual-setup-steps)
   - [Theme setup steps](#theme-setup-steps)
 - [Miscellaneous development notes](#miscellaneous-development-notes)
+- [Warranty (lack thereof)](#warranty)
+- [Contributing](#contributing)
+
+---
+## Prerequisites
+- Git 
+- [Node.js](https://nodejs.org/en) (I recommend v18, due to having had issues with Gulp on newer versions)
+- [Gulp](https://gulpjs.com/) installed globally
+- Local development environment set up with WordPress installed and running
+- Intermediate to advanced knowledge of WordPress, PHP, HTML, SCSS, JS, etc as it pertains to developing custom themes and plugins according to the requirements that brought you here. While a fair bit of boilerplate layout and design stuff is included for common requirements, if you don't want to write code this isn't the starterkit for you. 
 
 ---
 ## Common submodules
@@ -51,6 +62,8 @@ app/public/
 4. Do an initial commit 
 ```
 git add .gitignore
+```
+```
 git commit -m "Initial commit"
 ```
 6. Allow pulling this repo into the non-empty install directory by adding it as the upstream
@@ -68,6 +81,14 @@ git pull upstream blocks --allow-unrelated-histories --ff --strategy-option=thei
 6. Pull in the submodules for your chosen branch with:
 ```
 git submodule update --init
+```
+
+7. If the block branch pulls the `main` branch of `doublee-gutenberg` instead of `release`, (you can tell, it'll have _everything_ instead of just a couple of folders and PHP files) go to that directory and check out the `release` branch.
+```
+cd app/public/wp-content/plugins/doublee-gutenberg
+```
+```
+git checkout release
 ```
 
 #### Footnotes
@@ -99,6 +120,8 @@ After running the setup script as described above:
 1. Clone the theme 
 ```
 cd app/public/wp-content/themes
+```
+```
 git clone https://github.com/doubleedesign/doublee-theme-starter-kit-classic
 ```
 2. Unlink it from that repo<sup>1</sup>
@@ -116,10 +139,10 @@ After running the setup script as described above:
 
 1. Check the theme's README for any additional or updated setup steps that I may have missed here
 2. Get latest versions of [vue.esm-browser](https://unpkg.com/browse/vue@3.4.23/dist/) (from then select the latest version from that link) and [Vue SFC loader](https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js) for client theme and update the latter's version in `inc/frontend/class-frontend.php`
-3. Install dependencies (`npm install`)
-4. Update `theme-vars.json` in client theme 
-5. Run Gulp scripts to generate `theme.json`, CSS files etc 
-6. Update Font Awesome URL
+3. Update [Font Awesome](https://fontawesome.com/kits) URL
+4. Install dependencies (`npm install`)
+5. Update `theme-vars.json` in client theme 
+6. Run Gulp scripts to generate `theme.json`, CSS files etc 
 7. Add screenshot.png
 8. Update any cloud-hosted font paths in all files in `scss` folder
 9. Activate theme.
@@ -136,3 +159,20 @@ After running the setup script as described above:
 - Check Node version against range in `package.json` (due to Gulp compatibility)
 - Make sure `_variables.scss` is generated before trying to generate any other styles
 - If WP is loading old colours, make sure you have updated `theme.json` (using `gulp theme-json` unless that would overwrite changes in which case update the file manually)
+
+---
+## Warranty
+
+There isn't one.
+
+I have developed this starterkit for my own use, and written this documentation primarily for my future self. Sometimes I build a bunch of WordPress sites close together, and other times I might go 6 months between new builds, so I put all of this together for my own efficiency and consistency. In the spirit of open source, have posted it here for the benefit of other developers to pay it forward in tribute to how I benefitted from the likes of [Brandon Jones](https://www.youtube.com/makedesignnotwar)'s Super Skeleton and [Ole Fredrik Lie](https://github.com/olefredrik)'s [FoundationPress](https://github.com/olefredrik/FoundationPress) earlier in my career, and continue to benefit from other open source developers' work. 
+
+WordPress is no longer my full-time career and so I unfortunately cannot consistently dedicate time to this open source work outside of what directly benefits me and my clients. Suggestions, feature requests, bug reports, and general feedback are very welcome (I'd love to hear if you find this useful!) and I will endeavour to respond when I have time cand capacity, but ultimately use of this kit (including the referenced submodules) is at your own risk and the results are your own responsibility. 
+
+---
+## Contributing
+Now to pivot from the "can't help ya" negativity of the warranty section above, I would like to emphasise that feedback is absolutely welcome (I just can't promise if or when I'll action it). If you do find this kit and/or its associated submodules that I developed or forked and modified useful and add features, fix bugs, improve the existing functionality, etc., I would appreciate it if, in the spirit of open source, you would contribute it back via pull request in the relevant repository (i.e., either here or in the submodule's repo).
+
+If you are not able to make the change yourself, please feel free to raise the suggestion / report the bug by creating an issue in the relevant repository.
+
+Thank you for reading, thanks in advance for any contributions or feedback you may have, and happy coding! 
