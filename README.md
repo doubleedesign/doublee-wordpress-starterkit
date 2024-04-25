@@ -15,7 +15,7 @@
 ---
 ## Prerequisites
 - Git 
-- [Node.js](https://nodejs.org/en) (I recommend v18, due to having had issues with Gulp on newer versions)
+- [Node.js](https://nodejs.org/en)
 - [Gulp](https://gulpjs.com/) installed globally
 - Local development environment set up with WordPress installed and running
 - Intermediate to advanced knowledge of WordPress, PHP, HTML, SCSS, JS, etc as it pertains to developing custom themes and plugins according to the requirements that brought you here. While a fair bit of boilerplate layout and design stuff is included for common requirements, if you don't want to write code this isn't the starterkit for you. 
