@@ -41,7 +41,7 @@ async function processReplacements() {
 
 	if(!dryRun) {
 		// Rename theme directory
-		await renameDirectory(theme, theme.replace('client', kebabCaseName));
+		await renameDirectory(theme, theme.replace('client-name', kebabCaseName));
 
 		// Rename plugin files and directory
 		await renameFile(`${plugin}/clientname.php`, `${plugin}/doublee-${lowercaseName}-plugin.php`);
