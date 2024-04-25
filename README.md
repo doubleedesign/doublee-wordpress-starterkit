@@ -1,5 +1,13 @@
 # Double-E Design WordPress site blueprint
 
+- [Submodules](#included-as-submodules)
+- [Initial setup](#initial-setup)
+  - [Installing into fresh WordPress install](#installing-into-fresh-wordpress-install)
+  - [Automated setup script](#automated-setup-script)
+  - [General manual setup steps](#general-manual-setup-steps)
+  - [Theme setup steps](#theme-setup-steps)
+- [Miscellaneous development notes](#miscellaneous-development-notes)
+
 ## Included as submodules
 ### Common to both branches:
 - [Base plugin of my common customisations](https://github.com/doubleedesign/doublee-base-plugin)
@@ -18,7 +26,7 @@
 
 ## Initial setup
 
-### Installing into fresh Local site
+### Installing into fresh WordPress install
 1. Initialise it as a Git repo `git init`
 2. Copy the `.gitignore` file from this repo and modify as needed
 3. Do an initial commit (`git commit -m "Initial commit"`)
@@ -39,48 +47,55 @@ git pull upstream blocks --allow-unrelated-histories
 git submodule update --init
 ```
 
-### Site-level steps I hope to automate (but for now, are manual)
+### Automated setup script 
+Run the setup script and follow the prompts to do a find-and-replace across the client theme (for block-based sites) and client plugin boilerplates and rename the relevant files and folders with the client/project name.
 
-#### Classic theme:
+**Note:** The file paths are set up for Local by Flywheel. Update them accordingly if you have a different setup.
+
+```
+node setup/setup.js
+```
+
+### General manual setup steps 
+- Install [ACF Pro](https://www.advancedcustomfields.com/pro/) and enter licence key
+- Install [Advanced Editor Tools (TinyMCE Advanced)](https://en-au.wordpress.org/plugins/tinymce-advanced/)
+- As needed, install Ninja Forms + extensions, WooCommerce + extensions, etc
+- Import TinyMCE settings from `setup/tinymce-settings.json`.
+
+### Theme setup steps
+
+#### Classic theme
+After running the setup script as described above:
+
 1. Clone the theme 
 ```
 cd app/public/wp-content/themes
 git clone https://github.com/doubleedesign/doublee-theme-starter-kit-classic
 ```
-2. Unlink it from the main repo
+2. Unlink it from that repo (because it's a boilerplate for a custom theme, not a parent theme that could be updated without manual intervention)
 ```
 git remote rm origin
 ```
 
-More to come. Until then, follow the setup  steps in the theme's README as well as the manual setup steps below.
+3. Update Font Awesome URL 
+4. Add screenshot.png
+5. Update any cloud-hosted font paths in all files in `scss` folder.
+6. Check and perform any other setup setups in the theme's README.
 
-#### Block-based theme:
-1. Case-sensitive find-and-replace in `themes/client-name`
-2. Rename `client-name` theme folder
-3. Get latest versions of [vue.esm-browser](https://unpkg.com/browse/vue@3.4.23/dist/) (from then select the latest version from that link) and [Vue SFC loader](https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js) for client theme and update the latter's version in `inc/frontend/class-frontend.php`
-4. Install dependencies (`npm install`)
-5. Update `theme-vars.json` in client theme 
-6. Run Gulp scripts to generate `theme.json`, CSS files etc
+#### Block-based theme
+After running the setup script as described above:
 
-#### Plugin:
-1. Update and rename `clientname.php` with your own plugin name, description, author, and text domain.
-2. Rename the plugin folder and find & replace `doublee-client-plugin` with it throughout.
-3. Rename `class-clientname.php` so `clientname` is the all-lowercase name of your plugin
-4. Rename and find & replace references to `CLIENTNAME_VERSION` and `CLIENTNAME_PLUGIN_PATH`.
-5. Do a case-sensitive find and replace throughout the folder for `clientname`, replacing it with the all-lowercase name of your plugin.
-6. Do a case-sensitive find and replace throughout the folder for `ClientName`, replacing it with the ClientName name of your plugin.
+1. Check the theme's README for any additional or updated setup steps that I may have missed here
+2. Get latest versions of [vue.esm-browser](https://unpkg.com/browse/vue@3.4.23/dist/) (from then select the latest version from that link) and [Vue SFC loader](https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js) for client theme and update the latter's version in `inc/frontend/class-frontend.php`
+3. Install dependencies (`npm install`)
+4. Update `theme-vars.json` in client theme 
+5. Run Gulp scripts to generate `theme.json`, CSS files etc 
+6. Update Font Awesome URL
+7. Add screenshot.png
+8. Update any cloud-hosted font paths in all files in `scss` folder
+9. Activate theme.
 
-### Site-level manual steps
-- Install ACF Pro and enter licence key
-- Install Advanced Editor Tools (TinyMCE Advanced)
-- As needed, install Ninja Forms + extensions, WooCommerce + extensions, etc
-- Import TinyMCE settings (from `setup/tinymce-settings.json`)
-- Update Font Awesome URL in client theme (`inc/frontend/class-frontend.php`)
-- Add screenshot.png to client theme folder
-- Update any cloud-hosted font paths in all files in `scss` folder in client theme
-- Activate client theme
-
-## Development notes
+## Miscellaneous development notes
 
 ### When updating theme-vars.json
 - Run `gulp theme-json` again
