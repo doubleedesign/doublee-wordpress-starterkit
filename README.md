@@ -145,7 +145,8 @@ After running the setup script as described above:
 6. Run Gulp scripts to generate `theme.json`, CSS files etc 
 7. Add screenshot.png
 8. Update any cloud-hosted font paths in all files in `scss` folder
-9. Activate theme.
+9. Check that the theme path at the top of `wp-content/themes/YOUR_THEME/js/vue-components.js` is correct 
+10. Activate theme.
 
 ---
 ## Miscellaneous development notes
