@@ -8,41 +8,23 @@
  * Show colour previews in ACF selectboxes
  * Note: ACF field must have 'stylized UI' option turned on
 */
-.select2-selection__rendered,
-.select2-results__options .select2-results__option {
-	position: relative;
-
-	span {
-		display: flex;
+@each $colour, $value in $colours {
+	.select2-selection__rendered[title="#{$colour}"],
+	.select2-results__options .select2-results__option[id$="#{$colour}"] {
+		position: relative;
+		text-transform: capitalize;
+		display: flex !important;
 		justify-content: flex-start;
 		align-items: center;
 
-		@each $colour, $value in $colours {
-			&.#{$colour} {
-
-				&:before {
-					display: block;
-					content: '';
-					width: 1rem;
-					height: 1rem;
-					background: $value;
-					margin-right: 0.5rem;
-					border: 1px solid #CCC;
-				}
-			}
-		}
-
-		&.transparent {
-
-			&:before {
-				display: block;
-				content: '';
-				width: 1rem;
-				height: 1rem;
-				margin-right: 0.5rem;
-				border: 1px solid #CCC;
-			}
+		&:before {
+			background: $value;
+			display: block;
+			content: '';
+			width: 1rem;
+			height: 1rem;
+			margin-right: 0.5rem;
+			border: 1px solid #CCC;
 		}
 	}
 }
-
