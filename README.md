@@ -70,7 +70,7 @@ git commit -m "Initial commit"
 ```
 git remote add upstream https://github.com/doubleedesign/doublee-wordpress-starterkit
 ```
-5. Pull in this main repo, using either `classic` or `blocks` branch<sup>2</sup>
+5. Pull in this main repo, using either `classic` or `blocks` branch<sup>1</sup>
 ```
 git pull upstream classic --allow-unrelated-histories --ff --strategy-option=theirs
 ```
@@ -92,8 +92,7 @@ git checkout release
 ```
 
 #### Footnotes
-1. Because it's a boilerplate for a custom theme, not a parent theme that could be updated without manual intervention.
-2. `--strategy-option=theirs` (equivalent to `-X theirs`) automatically resolves any merge conflicts preferring the files in this repo; if you're working with a fresh install, that would only be the temporary `.gitignore` from step 2, as intended. Skip this if you expect conflicts you want to resolve manually.
+1. `--strategy-option=theirs` (equivalent to `-X theirs`) automatically resolves any merge conflicts preferring the files in this repo; if you're working with a fresh install, that would only be the temporary `.gitignore` from step 2, as intended. Skip this if you expect conflicts you want to resolve manually.
 
 ---
 ### Automated setup script 
@@ -133,6 +132,9 @@ git remote rm origin
 4. Add screenshot.png
 5. Update any cloud-hosted font paths in all files in `scss` folder.
 6. Check and perform any other setup setups in the theme's README.
+
+##### Footnotes
+1. Because it's a boilerplate for a custom theme, not a parent theme that could be updated without manual intervention.
 
 #### Block-based theme
 After running the setup script as described above:
