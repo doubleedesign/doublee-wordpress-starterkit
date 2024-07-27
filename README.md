@@ -77,13 +77,15 @@ git pull upstream classic --allow-unrelated-histories --ff --strategy-option=the
 ```
 git pull upstream blocks --allow-unrelated-histories --ff --strategy-option=theirs
 ```
-
-6. Pull in the submodules for your chosen branch with:
+6. Delete the default theme folders if you haven't already
+```
+rm -rf app/public/wp-content/themes/twentytwenty*
+```
+7. Pull in the submodules for your chosen branch with:
 ```
 git submodule update --init
 ```
-
-7. If the block branch pulls the `main` branch of `doublee-gutenberg` instead of `release`, (you can tell, it'll have _everything_ instead of just a couple of folders and PHP files) go to that directory and check out the `release` branch.
+8. If the block branch pulls the `main` branch of `doublee-gutenberg` instead of `release`, (you can tell, it'll have _everything_ instead of just a couple of folders and PHP files) go to that directory and check out the `release` branch.
 ```
 cd app/public/wp-content/plugins/doublee-gutenberg
 ```
