@@ -1,0 +1,25 @@
+{
+  "name": "doublee-wordpress-starterkit-storybook",
+  "type": "module",
+  "author": "Leesa Ward",
+  "version": "0.0.1",
+  "description": "Component library playground for WordPress theme development",
+  "scripts": {
+    "server": "php -S 127.0.0.1:5100 -t ./components",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-essentials": "^8.2.6",
+    "@storybook/addon-links": "^8.2.6",
+    "@storybook/addon-styling-webpack": "^1.0.0",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.4",
+    "@storybook/blocks": "^8.2.6",
+    "@storybook/server": "^8.2.6",
+    "@storybook/server-webpack5": "^8.2.6",
+    "@storybook/test": "^8.2.6",
+    "sass-loader": "^16.0.0",
+    "storybook": "^8.2.6"
+  }
+}

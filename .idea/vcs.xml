@@ -2,9 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/public/wp-content/plugins/classic-editor" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/public/wp-content/plugins/doublee-base-plugin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/public/wp-content/plugins/doublee-breadcrumbs" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/public/wp-content/plugins/doublee-gutenberg" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/public/wp-content/themes/doublee-foundation-theme" vcs="Git" />
   </component>
 </project>
