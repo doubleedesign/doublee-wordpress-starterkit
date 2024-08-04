@@ -14,11 +14,11 @@ This documentation is written for the very broad audience of WordPress theme dev
   - [Symlinked relevant theme directories](#symlinked-relevant-theme-directories)
   - [Local Node installation](#local-node-installation)
   - [Storybook and its dependencies](#storybook-and-its-dependencies)
-- [Running this thing](#running-this-thing)
+- [Running this project](#running-this-project)
+- [A bit about how it works](#a-bit-about-how-it-works)
+  - [Loading wrapping HTML and PHP dependencies](#loading-wrapping-html-and-php-dependencies)
+  - [Template output functions](#template-output-functions)
 - [Creating stories](#creating-stories)
-- [Template output functions](#template-output-functions)
-  - [Mocked functions](#mocked-functions)
-  - [Real functions](#real-functions)
 - [Miscellaneous notes](#miscellaneous-notes)
 - [Glossary](#glossary)
 
@@ -153,7 +153,7 @@ New-Item -ItemType SymbolicLink -Path "components\layout\project" -Target "..\ap
 </details>
 
 
-Then when you run the Storybook server, it will be able to access the relevant theme template files with nice and simple file paths, no worrying about how many `../../`s you need to get a relative path to a real file right. **Remember:** The web server root is the `components` folder, so omit that from file URLs. An example of a valid URL is `http://127.0.0.1:5100/blocks/foundation/core/button/index.php`.
+Then when you run the Storybook server, it will be able to access the relevant theme template files with nice and simple file paths, no worrying about how many `../../`s you need to get a relative path to a real file right. **Remember:** The web server root is the `components` folder, so omit that from file URLs. An example of a valid URL is `http://localhost:6001/blocks/foundation/core/button/index.php`.
 
 <details>
 <summary>Persisting symlinks across machines</summary>
@@ -211,29 +211,63 @@ npm install
 ```
 
 ---
-## Running this thing
+## Running this project
 
-To come.
+From the `storybook` directory:
+
+1. Run the PHP server:
+```bash
+npm run server
+```
+Under the hood, this runs `start.php`, which does some pre-work to create/update a local `php.ini` configuration file before starting the PHP server with the required arguments.
+
+2. Run Storybook in dev mode (so you don't need to restart to see your changes):
+```bash
+npm run storybook
+```
+
+---
+
+## A bit about how it works
+
+### Loading wrapping HTML and PHP dependencies
+
+The server start script is configured to wrap each block/element PHP template with some additional code to make them valid standalone HTML documents and mock how they would work in a WordPress environment, without modifying the actual template files. 
+
+<dl>
+<dt>wrapper-open.php</dt>
+<dd>
+
+- PHP includes to load the required functions and data for the templates' output
+- Opening `<html> tag`
+- HTML document type declaration
+- `<head>` tag with PHP code to import global theme and third-party stylesheets and scripts
+- Opening `<body>` tag.
+</dd>
+
+<dt>wrapper-close.php</dt>
+<dd>
+
+- Closing `</body>` and `</html>` tags.
+</dd>
+</dl>
+
+
+### Template output functions
+
+#### Mocked functions
+
+To enable the development of theme UI components in isolation within a lightweight environment, I have configured the setup so that an active WordPress installation is not required to run Storybook and develop, test, and demo these components. Instead, mocked versions of functions from WordPress, ACF, and other plugins are used to provide the necessary demo data to the templates.
+
+#### Real functions
+
+While functions from WordPress, ACF, and other plugins are mocked, any function that is part of the themes themselves use the actual implementation.
 
 ---
 
 ## Creating stories
 
 To come.
-
----
-
-## Template output functions
-
-// TODO how to get the files to use the mocked functions
-
-### Mocked functions
-
-To enable the development of theme UI components in isolation within a lightweight environment, I have configured the setup so that an active WordPress installation is not required to run Storybook and develop, test, and demo these components. Instead, mocked versions of WordPress, ACF, and other plugin functions are used to provide the necessary demo data to the templates.
-
-### Real functions
-
-While functions from WordPress, ACF, and other plugins are mocked, any function that is part of the themes themselves use the actual implementation.
 
 ---
 

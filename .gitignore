@@ -43,3 +43,5 @@ logs
 
 
 *storybook.log
+# Storybook PHP server config that gets dynamically updated on a per-machine basis
+storybook/php.ini

@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "description": "Component library playground for WordPress theme development",
   "scripts": {
-    "server": "php -S 127.0.0.1:5100 -t ./components",
+    "server": "php start.php",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
