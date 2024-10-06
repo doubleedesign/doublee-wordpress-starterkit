@@ -42,7 +42,7 @@ Included in this repo:
 - Client plugin boilerplate
 
 ---
-## Initial setup
+## Initial setup 
 
 ### Installing into fresh WordPress install
 1. Initialise it as a Git repo
@@ -66,35 +66,71 @@ git add .gitignore
 ```
 git commit -m "Initial commit"
 ```
-6. Allow pulling this repo into the non-empty install directory by adding it as the upstream
+#### For a new project
+
+5. Allow pulling this repo into the non-empty install directory by adding it as the upstream:
 ```
 git remote add upstream https://github.com/doubleedesign/doublee-wordpress-starterkit
 ```
-5. Pull in this main repo, using either `classic` or `blocks` branch<sup>1</sup>
+6. Pull in this main repo, using either `classic` or `blocks` branch<sup>1</sup>
 ```
 git pull upstream classic --allow-unrelated-histories --ff --strategy-option=theirs
 ```
 ```
 git pull upstream blocks --allow-unrelated-histories --ff --strategy-option=theirs
 ```
-6. Delete the default theme folders if you haven't already
+7. Delete the default theme folders if you haven't already
 ```
 rm -rf app/public/wp-content/themes/twentytwenty*
 ```
-7. Pull in the submodules for your chosen branch with:
+8. Pull in the submodules for your chosen branch with:
 ```
 git submodule update --init
 ```
-8. If the block branch pulls the `main` branch of `doublee-gutenberg` instead of `release`, (you can tell, it'll have _everything_ instead of just a couple of folders and PHP files) go to that directory and check out the `release` branch.
+9. If the block branch pulls the `main` branch of `doublee-gutenberg` instead of `release`, (you can tell, it'll have _everything_ instead of just a couple of folders and PHP files) go to that directory and check out the `release` branch.
 ```
 cd app/public/wp-content/plugins/doublee-gutenberg
 ```
 ```
 git checkout release
 ```
-
-#### Footnotes
+##### Footnotes
 1. `--strategy-option=theirs` (equivalent to `-X theirs`) automatically resolves any merge conflicts preferring the files in this repo; if you're working with a fresh install, that would only be the temporary `.gitignore` from step 2, as intended. Skip this if you expect conflicts you want to resolve manually.
+
+#### For working on the starterkit itself
+
+5. Allow pulling this repo into the non-empty install directory by adding it as the origin:
+```
+git remote add origin https://github.com/doubleedesign/doublee-wordpress-starterkit
+```
+6. Fetch the latest:
+```
+git fetch origin
+```
+7. Reset local `master` to match `origin/master`:
+```
+git reset --hard origin/master
+```
+8. Delete the default theme folders  if you haven't already
+```
+rm -rf app/public/wp-content/themes/twentytwenty*
+```
+9. If you're going to work on a non-master branch, check it out
+```
+git checkout classic
+git checkout blocks
+```
+10. Pull in the submodules for your chosen branch with:
+```
+git submodule update --init
+```
+11. If the block branch pulls the `main` branch of `doublee-gutenberg` instead of `release`, (you can tell, it'll have _everything_ instead of just a couple of folders and PHP files) go to that directory and check out the `release` branch.
+```
+cd app/public/wp-content/plugins/doublee-gutenberg
+```
+```
+git checkout release
+```
 
 ---
 ### Automated setup script 
