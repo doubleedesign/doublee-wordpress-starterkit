@@ -8,6 +8,10 @@
   - [Automated setup script](#automated-setup-script)
   - [General manual setup steps](#general-manual-setup-steps)
   - [Theme setup steps](#theme-setup-steps)
+- [Development](#development)
+    - [Multisite setup](#multisite-setup)
+    - [Storybook](#storybook)
+    - [Updating the branches](#updating-the-branches)
 - [Miscellaneous development notes](#miscellaneous-development-notes)
 - [Warranty (lack thereof)](#warranty)
 - [Contributing](#contributing)
@@ -44,6 +48,8 @@ Included in this repo:
 ---
 ## Initial setup 
 
+**Note:** If working on the starterkit itself using a fresh install using Local By Flywheel, ensure you initialise it as multisite during the setup process in Local.
+
 ### Installing into fresh WordPress install
 1. Initialise it as a Git repo
 ```
@@ -66,7 +72,7 @@ git add .gitignore
 ```
 git commit -m "Initial commit"
 ```
-#### For a new project
+#### For a new project:
 
 5. Allow pulling this repo into the non-empty install directory by adding it as the upstream:
 ```
@@ -94,47 +100,16 @@ cd app/public/wp-content/plugins/doublee-gutenberg
 ```
 git checkout release
 ```
+#### For working on the starterkit:
+
+See the [Development](#development) section below.
+
 ##### Footnotes
 1. `--strategy-option=theirs` (equivalent to `-X theirs`) automatically resolves any merge conflicts preferring the files in this repo; if you're working with a fresh install, that would only be the temporary `.gitignore` from step 2, as intended. Skip this if you expect conflicts you want to resolve manually.
 
-#### For working on the starterkit itself
-
-5. Allow pulling this repo into the non-empty install directory by adding it as the origin:
-```
-git remote add origin https://github.com/doubleedesign/doublee-wordpress-starterkit
-```
-6. Fetch the latest:
-```
-git fetch origin
-```
-7. Reset local `master` to match `origin/master`:
-```
-git reset --hard origin/master
-```
-8. Delete the default theme folders  if you haven't already
-```
-rm -rf app/public/wp-content/themes/twentytwenty*
-```
-9. If you're going to work on a non-master branch, check it out
-```
-git checkout classic
-git checkout blocks
-```
-10. Pull in the submodules for your chosen branch with:
-```
-git submodule update --init
-```
-11. If the block branch pulls the `main` branch of `doublee-gutenberg` instead of `release`, (you can tell, it'll have _everything_ instead of just a couple of folders and PHP files) go to that directory and check out the `release` branch.
-```
-cd app/public/wp-content/plugins/doublee-gutenberg
-```
-```
-git checkout release
-```
-
 ---
 ### Automated setup script 
-Run the setup script and follow the prompts to do a find-and-replace across the client theme (for block-based sites) and client plugin boilerplates and rename the relevant files and folders with the client/project name.
+For new projects, run the setup script and follow the prompts to do a find-and-replace across the client theme (for block-based sites) and client plugin boilerplates and rename the relevant files and folders with the client/project name.
 
 **Note:** The file paths are set up for Local by Flywheel. Update them accordingly if you have a different setup.
 
@@ -189,6 +164,61 @@ After running the setup script as described above:
 10. Activate theme.
 
 ---
+
+## Development
+
+To work on the starterkit itself, follow the [Initial Setup][#initial-setup] steps above, then:
+
+5. Allow pulling this repo into the non-empty install directory by adding it as the origin:
+```
+git remote add origin https://github.com/doubleedesign/doublee-wordpress-starterkit
+```
+6. Fetch the latest:
+```
+git fetch origin
+```
+7. Reset local `master` to match `origin/master`:
+```
+git reset --hard origin/master
+```
+8. Delete the default theme folders  if you haven't already
+```
+rm -rf app/public/wp-content/themes/twentytwenty*
+```
+9. If appropriate, create and check out a new branch for your work:
+```
+git checkout -b my-new-feature
+```
+10. Pull in the submodules:
+```
+git submodule update --init
+```
+
+### Multisite setup
+
+To work on multiple variations of the starterkit, it is ideal to use a multisite installation with one site per theme type. This makes it easier to keep the variations as closely aligned as possible on common features and updates, as well as test things across variations more easily. This approach would also help scale the project if there's a need to add more variations in the future.
+
+1. In `wp-config.php`, add the following line:
+```
+define('WP_ALLOW_MULTISITE', true);
+```
+2. Log in to the WordPress admin and go to Tools > Network Setup. Follow the instructions to set up a multisite network.
+
+3. Add sites for each variation (e.g., Classic and Blocks).
+4. To ensure that all sites show up in "My sites" in the menu, go into each of the sites' settings > Users tab > ensure the Super Admin account is there.
+5. Network activate ACF Pro, Advanced Editor Tools, Breadcrumbs, Client Name Plugin, and Double-E Base Plugin.
+6. In Settings, scroll down to Menu settings > Enable Administration Menus and tick "Plugins". 
+7. In  the Classic site, activate Classic Editor.
+
+### Storybook
+
+Details to come.
+
+### Updating the branches
+
+ Instructions for bringing changes into the branches still to come. Important thing is not to merge the `.gitmodules` file because master has everything, whereas the variation branches should not.
+
+---
 ## Miscellaneous development notes
 
 ### When updating theme-vars.json
@@ -217,3 +247,4 @@ Now to pivot from the "can't help ya" negativity of the warranty section above, 
 If you are not able to make the change yourself, please feel free to raise the suggestion / report the bug by creating an issue in the relevant repository.
 
 Thank you for reading, thanks in advance for any contributions or feedback you may have, and happy coding! 
+
