@@ -207,8 +207,10 @@ define('WP_ALLOW_MULTISITE', true);
 3. Add sites for each variation (e.g., Classic and Blocks).
 4. To ensure that all sites show up in "My sites" in the menu, go into each of the sites' settings > Users tab > ensure the Super Admin account is there.
 5. Network activate ACF Pro, Advanced Editor Tools, Breadcrumbs, Client Name Plugin, and Double-E Base Plugin.
-6. In Settings, scroll down to Menu settings > Enable Administration Menus and tick "Plugins". 
-7. In  the Classic site, activate Classic Editor.
+6. Network enable the themes.
+7. In Settings, scroll down to Menu settings > Enable Administration Menus and tick "Plugins". 
+8. In  the Classic site, activate Classic Editor and the Classic Starterkit theme.
+9. In the Blocks site, activate the Foundation theme.
 
 ### Storybook
 
