@@ -7,9 +7,9 @@
 [submodule "app/public/wp-content/plugins/classic-editor"]
 	path = app/public/wp-content/plugins/classic-editor
 	url = https://github.com/WordPress/classic-editor
-[submodule "app/public/wp-content/themes/doublee-foundation-theme"]
-	path = app/public/wp-content/themes/doublee-foundation-theme
-	url = https://github.com/doubleedesign/doublee-foundation-theme
-[submodule "app/public/wp-content/themes/doublee-theme-starter-kit-classic"]
-	path = app/public/wp-content/themes/doublee-theme-starter-kit-classic
-	url = https://github.com/doubleedesign/doublee-theme-starter-kit-classic
+[submodule "app/public/wp-content/themes/starter-kit-blocks"]
+	path = app/public/wp-content/themes/starter-kit-blocks
+	url = https://github.com/doubleedesign/doublee-wp-theme-starter-kit-blocks
+[submodule "app/public/wp-content/themes/starter-kit-classic"]
+	path = app/public/wp-content/themes/starter-kit-classic
+	url = https://github.com/doubleedesign/doublee-wp-theme-starter-kit-classic
