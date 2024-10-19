@@ -5,6 +5,7 @@
     <mapping directory="$PROJECT_DIR$/app/public/wp-content/plugins/classic-editor" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/public/wp-content/plugins/doublee-base-plugin" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/public/wp-content/plugins/doublee-breadcrumbs" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/app/public/wp-content/themes/doublee-foundation-theme" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/public/wp-content/themes/starter-kit-blocks" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/public/wp-content/themes/starter-kit-classic" vcs="Git" />
   </component>
 </project>
