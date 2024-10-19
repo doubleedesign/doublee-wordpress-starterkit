@@ -13,3 +13,6 @@
 [submodule "app/public/wp-content/themes/starter-kit-classic"]
 	path = app/public/wp-content/themes/starter-kit-classic
 	url = https://github.com/doubleedesign/doublee-wp-theme-starter-kit-classic
+[submodule "app/public/wp-content/plugins/acf-extended"]
+	path = app/public/wp-content/plugins/acf-extended
+	url = https://github.com/acf-extended/ACF-Extended
