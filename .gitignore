@@ -39,4 +39,5 @@ logs
 
 # Plugins
 /app/public/wp-content/plugins/advanced-custom-fields-pro
+/app/public/wp-content/plugins/advanced-custom-fields-component_field
 
