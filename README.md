@@ -26,36 +26,42 @@
 
 ---
 ## Common submodules
-Repositories common to many sites (including those not developed by me, if available) are included as submodules for easier updating. 
+Repositories common to many sites (including those not developed by me, if available via GitHub) are included as submodules for easier updating. 
 
 ### Common to both branches:
 - [Base plugin of my common customisations](https://github.com/doubleedesign/doublee-base-plugin)
 - [Breadcrumbs plugin](https://github.com/doubleedesign/doublee-breadcrumbs)
 
 ### Classic branch:
+- [Classic theme starter kit / parent theme](https://github.com/doubleedesign/doublee-wp-theme-starter-kit-classic)
 - [Classic Editor](https://github.com/WordPress/classic-editor)
+- [ACF Extended](https://github.com/acf-extended/ACF-Extended)
 
 ### Block Editor branch:
-- [Parent theme (for block-based sites)](https://github.com/doubleedesign/doublee-foundation-theme)
-- [Customised block editor plugin](https://github.com/doubleedesign/doublee-gutenberg) (minor alterations and additions, updated with official plugin periodically); be sure to track the `release` branch of this repo to copy down just what's required for production
+- [Block theme starter kit / parent theme](https://github.com/doubleedesign/doublee-wp-theme-starter-kit-blocks)
+
+## Other required plugins
+- [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) 
+- [Advanced Editor Tools](https://wordpress.org/plugins/tinymce-advanced/) (also known as TinyMCE Advanced) is included in this repo because at the time of writing, it isn't available on GitHub to use as a submodule.
+- The "Theme Starter Kit - Common" plugin included in this repository is required for using either of my starter themes. It contains functionality and customisations that are common to both themes to reduce duplication and unnecessary divergence between them.
 
 ---
 ## Starterkits for individual sites
 Included in this repo:
-- Client theme boilerplate for block-based sites (instructions below for classic site theme starterkit)
+- Client theme boilerplate
 - Client plugin boilerplate
 
 ---
 ## Initial setup 
 
-**Note:** If working on the starterkit itself using a fresh install using Local By Flywheel, ensure you initialise it as multisite during the setup process in Local.
+**Note:** If working on the starterkit itself using a fresh installation using Local By Flywheel, ensure you initialise it as multisite during the setup process in Local. 
 
 ### Installing into fresh WordPress install
 1. Initialise it as a Git repo
 ```
 git init
 ```
-3. Create a basic `.gitignore` file to avoid committing pretty much anything initially (this is temporary and will be overwritten by this repo's `.gitignore`)
+2. Create a basic `.gitignore` file to avoid committing pretty much anything initially (this is temporary and will be overwritten by this repo's `.gitignore`)
 ```
 conf
 logs
@@ -65,41 +71,36 @@ debug.log
 local-xdebuginfo.php
 app/public/
 ```
-4. Do an initial commit 
+3. Do an initial commit 
 ```
 git add .gitignore
 ```
 ```
 git commit -m "Initial commit"
 ```
+
 #### For a new project:
 
-5. Allow pulling this repo into the non-empty install directory by adding it as the upstream:
+4. Allow pulling this repo into the non-empty install directory by adding it as the upstream:
 ```
 git remote add upstream https://github.com/doubleedesign/doublee-wordpress-starterkit
 ```
-6. Pull in this main repo, using either `classic` or `blocks` branch<sup>1</sup>
+5. Pull in this main repo, using either `classic` or `blocks` branch<sup>1</sup>
 ```
 git pull upstream classic --allow-unrelated-histories --ff --strategy-option=theirs
 ```
 ```
 git pull upstream blocks --allow-unrelated-histories --ff --strategy-option=theirs
 ```
-7. Delete the default theme folders if you haven't already
+6. Delete the default theme folders if you haven't already
 ```
 rm -rf app/public/wp-content/themes/twentytwenty*
 ```
-8. Pull in the submodules for your chosen branch with:
+7. Pull in the submodules for your chosen branch with:
 ```
 git submodule update --init
 ```
-9. If the block branch pulls the `main` branch of `doublee-gutenberg` instead of `release`, (you can tell, it'll have _everything_ instead of just a couple of folders and PHP files) go to that directory and check out the `release` branch.
-```
-cd app/public/wp-content/plugins/doublee-gutenberg
-```
-```
-git checkout release
-```
+
 #### For working on the starterkit:
 
 See the [Development](#development) section below.
@@ -109,59 +110,30 @@ See the [Development](#development) section below.
 
 ---
 ### Automated setup script 
-For new projects, run the setup script and follow the prompts to do a find-and-replace across the client theme (for block-based sites) and client plugin boilerplates and rename the relevant files and folders with the client/project name.
+For new projects, run the setup script and follow the prompts to do a find-and-replace across the client theme and client plugin boilerplates and rename the relevant files and folders with the client/project name.
 
 **Note:** The file paths are set up for Local by Flywheel. Update them accordingly if you have a different setup.
 
 ```
 node setup/setup.js
 ```
+
 ---
 ### General manual setup steps 
-- Install [ACF Pro](https://www.advancedcustomfields.com/pro/) and enter licence key
-- Install [Advanced Editor Tools (TinyMCE Advanced)](https://en-au.wordpress.org/plugins/tinymce-advanced/)
-- As needed, install Ninja Forms + extensions, WooCommerce + extensions, etc
-- Import TinyMCE settings from `setup/tinymce-settings.json`.
-  
----
-### Theme setup steps
 
-#### Classic theme
-After running the setup script as described above:
-
-1. Clone the theme 
-```
-cd app/public/wp-content/themes
-```
-```
-git clone https://github.com/doubleedesign/doublee-theme-starter-kit-classic
-```
-2. Unlink it from that repo<sup>1</sup>
-```
-git remote rm origin
-```
-
-3. Update Font Awesome URL 
-4. Add screenshot.png
-5. Update any cloud-hosted font paths in all files in `scss` folder.
-6. Check and perform any other setup setups in the theme's README.
-
-##### Footnotes
-1. Because it's a boilerplate for a custom theme, not a parent theme that could be updated without manual intervention.
-
-#### Block-based theme
-After running the setup script as described above:
-
-1. Check the theme's README for any additional or updated setup steps that I may have missed here
-2. Get latest versions of [vue.esm-browser](https://unpkg.com/browse/vue@3.4.23/dist/) (from then select the latest version from that link) and [Vue SFC loader](https://cdn.jsdelivr.net/npm/vue3-sfc-loader/dist/vue3-sfc-loader.js) for client theme and update the latter's version in `inc/frontend/class-frontend.php`
-3. Update [Font Awesome](https://fontawesome.com/kits) URL
-4. Install dependencies (`npm install`)
-5. Update `theme-vars.json` in client theme 
-6. Run Gulp scripts to generate `theme.json`, CSS files etc 
-7. Add screenshot.png
-8. Update any cloud-hosted font paths in all files in `scss` folder
-9. Check that the theme path at the top of `wp-content/themes/YOUR_THEME/js/vue-components.js` is correct 
-10. Activate theme.
+1. Install [ACF Pro](https://www.advancedcustomfields.com/pro/) and enter licence key
+2. For classic sites, install [ACF Component Field](https://codecanyon.net/item/advanced-custom-fields-component-field-addon/13770937)
+3. Import TinyMCE settings from `setup/tinymce-settings.json` in your selected theme.
+4. Add logo, Font Awesome kit ID and external fonts to be loaded in the `<head>` in the global options in the admin (the page will be labelled with your site name)
+5. Update any cloud-hosted font paths within the client theme folder
+6. Add favicon in Settings > General Settings (the native one, where you set your site name)
+7. `cd` into the client theme folder and install dependencies (`npm install`)
+8. Update `theme-vars.json` in client theme
+9. Run Gulp scripts to generate stylesheets, bundle scripts, etc.
+10. Check the parent theme's README.md for any additional setup steps or things to note
+11. Activate your child theme 
+12. As needed, install Ninja Forms + extensions, WooCommerce + extensions, etc.
+13. Add client-specific `screenshot.png` to your child theme folder
 
 ---
 
@@ -169,27 +141,27 @@ After running the setup script as described above:
 
 To work on the starterkit itself, follow the [Initial Setup][#initial-setup] steps above, then:
 
-5. Allow pulling this repo into the non-empty install directory by adding it as the origin:
+1. Allow pulling this repo into the non-empty install directory by adding it as the origin:
 ```
 git remote add origin https://github.com/doubleedesign/doublee-wordpress-starterkit
 ```
-6. Fetch the latest:
+2. Fetch the latest:
 ```
 git fetch origin
 ```
-7. Reset local `master` to match `origin/master`:
+3. Reset local `develop` to match `origin/develop`:
 ```
-git reset --hard origin/master
+git reset --hard origin/develop
 ```
-8. Delete the default theme folders  if you haven't already
+4. Delete the default theme folders  if you haven't already
 ```
 rm -rf app/public/wp-content/themes/twentytwenty*
 ```
-9. If appropriate, create and check out a new branch for your work:
+5. If appropriate, create and check out a new branch for your work:
 ```
 git checkout -b my-new-feature
 ```
-10. Pull in the submodules:
+6. Pull in the submodules:
 ```
 git submodule update --init
 ```
@@ -206,11 +178,11 @@ define('WP_ALLOW_MULTISITE', true);
 
 3. Add sites for each variation (e.g., Classic and Blocks).
 4. To ensure that all sites show up in "My sites" in the menu, go into each of the sites' settings > Users tab > ensure the Super Admin account is there.
-5. Network activate ACF Pro, Advanced Editor Tools, Breadcrumbs, Client Name Plugin, and Double-E Base Plugin.
+5. Network activate ACF Pro, Advanced Editor Tools, Breadcrumbs, Theme Starter Kit - Common, Double-E Base Plugin, and Client Name Plugin.
 6. Network enable the themes.
 7. In Settings, scroll down to Menu settings > Enable Administration Menus and tick "Plugins". 
-8. In  the Classic site, activate Classic Editor and the Classic Starterkit theme.
-9. In the Blocks site, activate the Foundation theme.
+8. In the Classic site, activate Classic Editor, ACF Component Field, ACF Extended, and the Classic Starterkit theme.
+9. In the Blocks site, activate the Block Starterkit theme.
 
 ### Storybook
 
@@ -225,7 +197,7 @@ Details to come.
 
 ### When updating theme-vars.json
 - Run `gulp theme-json` again
-- Run `gulp scss-variables` again before running `gulp theme-css`
+- Run `gulp variables` again before running `gulp theme`, `gulp components`, gulp modules`, or `gulp blocks` again
 
 ### Troubleshooting
 - Note that file paths in `.gitmodules`, `.gitignore`, and any future automated scripts use Flywheel's directory structure where the WordPress install is in `app/public/` so may need to be updated for other setups

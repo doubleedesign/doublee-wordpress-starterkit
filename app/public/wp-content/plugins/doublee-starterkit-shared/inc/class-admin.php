@@ -8,6 +8,7 @@ class Starterkit_Shared_Admin {
         add_action('admin_enqueue_scripts', [$this, 'admin_css']);
         add_action('after_setup_theme', [$this, 'editor_css']);
         add_action('admin_init', [$this, 'disable_customiser']);
+        add_action('admin_menu', [$this, 'disable_block_patterns_menu_in_classic_sites'], 11);
         add_action('login_enqueue_scripts', [$this, 'login_logo']);
         add_action('admin_menu', [$this, 'remove_metaboxes']);
         add_action('add_meta_boxes', [$this, 'remove_metaboxes'], 99);
@@ -65,6 +66,20 @@ class Starterkit_Shared_Admin {
         $customize_url = add_query_arg('return', urlencode(remove_query_arg(wp_removable_query_args(), wp_unslash($_SERVER['REQUEST_URI']))), 'customize.php');
         remove_submenu_page('themes.php', $customize_url);
     }
+
+
+    function disable_block_patterns_menu_in_classic_sites(): void {
+        // Ensure 'is_plugin_active' is available
+        if (!function_exists( 'is_plugin_active')) {
+            include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+        }
+
+        // Check if the Classic Editor plugin is enabled
+        if (function_exists('is_plugin_active') && is_plugin_active('classic-editor/classic-editor.php')) {
+            remove_submenu_page('themes.php', 'site-editor.php?path=/patterns');
+        }
+    }
+
 
     /**
      * Customise login screen logo

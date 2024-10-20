@@ -4,6 +4,7 @@ class Starterkit_Shared_TinyMCE {
 
     public function __construct() {
         add_filter('tiny_mce_before_init', [$this, 'init_settings']);
+        add_action('admin_enqueue_scripts', [Starterkit_Theme_CMS_Utils::class, 'enqueue_custom_fonts']);
         add_filter('tiny_mce_before_init', [$this, 'editor_css_acf']);
         add_filter('tiny_mce_before_init', [$this, 'add_theme_colours']);
         add_filter('tiny_mce_plugins', [$this, 'remove_custom_colours']);

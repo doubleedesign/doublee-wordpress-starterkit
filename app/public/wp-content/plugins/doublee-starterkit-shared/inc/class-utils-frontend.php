@@ -257,7 +257,7 @@ class Starterkit_Theme_Frontend_Utils {
     static function get_name_of_first_acf_field_name_of_type($field_type, string $post_id = ''): int|string {
         $field_name = '';
 
-        if( ! $post_id) {
+        if(!$post_id) {
             $post_id = get_the_id();
         }
 
@@ -265,9 +265,11 @@ class Starterkit_Theme_Frontend_Utils {
         if($acf_fields) {
             foreach($acf_fields as $name => $value) {
                 $field_object = get_field_object($name);
-                if($field_object['type'] == $field_type) {
-                    $field_name = $name;
-                    break;
+                if($field_object) {
+                    if ($field_object['type'] == $field_type) {
+                        $field_name = $name;
+                        break;
+                    }
                 }
             }
         }
