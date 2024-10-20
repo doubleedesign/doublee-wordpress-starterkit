@@ -3,6 +3,7 @@ local-xdebuginfo.php
 conf
 app/public/fw-*
 app/public/wp-content/db-error.php
+app/sql
 
 # Wordpress - ignore core, configuration, examples, uploads and logs.
 # https://github.com/github/gitignore/blob/main/WordPress.gitignore
@@ -27,7 +28,7 @@ app/public/wp-content/db-error.php
 wp-config.php
 
 # Uploads
-/wp-content/uploads/
+/app/public/wp-content/uploads/
 
 # Log files
 logs
@@ -39,7 +40,7 @@ logs
 
 # Plugins
 /app/public/wp-content/plugins/advanced-custom-fields-pro
-/app/public/wp-content/plugins/tinymce-advanced
+/app/public/wp-content/plugins/advanced-custom-fields-component_field
 
 
 *storybook.log
