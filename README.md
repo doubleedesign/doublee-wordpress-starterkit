@@ -100,6 +100,11 @@ rm -rf app/public/wp-content/themes/twentytwenty*
 ```
 git submodule update --init
 ```
+8. Ensure the submodules are up-to-date with the latest commits:
+```
+git submodule update --remote
+```
+
 
 #### For working on the starterkit:
 
@@ -206,6 +211,9 @@ Details to come.
 - Check Node version against range in `package.json` (due to Gulp compatibility)
 - Make sure `_variables.scss` is generated before trying to generate any other styles
 - If WP is loading old colours, make sure you have updated `theme.json` (using `gulp theme-json` unless that would overwrite changes in which case update the file manually)
+
+### Problems with Git submodules when switching branches
+Because the branches have some different submodules, you may encounter issues when switching between them and need to clean up the ones that aren't needed in the current branch. I have included a Bash script - `./update_submodules.sh` - that clears the Git module cache and re-initialises the submodules for the current branch. It also checks out the latest commit for each submodule, helping ensure they stay up-to-date.
 
 ---
 ## Warranty
