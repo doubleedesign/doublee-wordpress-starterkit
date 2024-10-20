@@ -112,6 +112,8 @@ See the [Development](#development) section below.
 ### Automated setup script 
 For new projects, run the setup script and follow the prompts to do a find-and-replace across the client theme and client plugin boilerplates and rename the relevant files and folders with the client/project name.
 
+::warn:: This script has not yet been set up for the classic theme and has not been tested with the block theme since some major updates. `// TODO`
+
 **Note:** The file paths are set up for Local by Flywheel. Update them accordingly if you have a different setup.
 
 ```
