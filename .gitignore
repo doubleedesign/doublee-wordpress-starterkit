@@ -42,3 +42,7 @@ logs
 /app/public/wp-content/plugins/advanced-custom-fields-pro
 /app/public/wp-content/plugins/advanced-custom-fields-component_field
 
+
+*storybook.log
+# Storybook PHP server config that gets dynamically updated on a per-machine basis
+storybook/php.ini
