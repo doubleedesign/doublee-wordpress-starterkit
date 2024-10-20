@@ -1,0 +1,7 @@
+// Core utilities and styles to be imported into every block at compile time without explicit imports
+@import '../common/scss/variables';
+@import '../../starter-kit-blocks/common/scss/core/functions';
+@import '../../starter-kit-blocks/common/scss/core/mixins';
+@import '../../starter-kit-blocks/common/scss/core/grid/mixins/breakpoints';
+@import '../../starter-kit-blocks/common/scss/core/grid/mixins/grid';
+@import '../../starter-kit-blocks/common/scss/core/grid/mixins/visually-hidden';

@@ -16,7 +16,7 @@
 		a:not(.btn) {
 			color: color-contrast($value);
 			text-decoration-color: rgba(color-contrast($value), 0.4);
-			@include underline-from-center(color-contrast($value));
+			//@include underline-from-center(color-contrast($value));
 			vertical-align: middle !important;
 			transform: translateY(-2px);
 			overflow: visible;

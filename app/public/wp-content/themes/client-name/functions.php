@@ -6,12 +6,10 @@
  * @package clientname
  */
 
-require_once('inc/cms/class-cms.php');
-require_once('inc/frontend/class-frontend.php');
+require_once('inc/class-media.php');
 
 function init_theme(): void {
-	new ClientName_CMS();
-	new ClientName_Frontend();
+	new ClientName_Media();
 }
 add_action('init', 'init_theme', 11);
 
@@ -34,18 +32,6 @@ function clientname_register_constants(): void {
 	define('THEME_VERSION', '1.0.0');
 	if (!defined('PAGE_FOR_POSTS')) {
 		define('PAGE_FOR_POSTS', get_option('page_for_posts'));
-	}
-
-	if (class_exists('ACF')) {
-		// Get it from options table instead of using ACF get_field()
-		// due to loading order of ACF and theme
-		$acf_gmaps_key = get_option('options_google_maps_api_key');
-	}
-	if (isset($acf_gmaps_key)) {
-		define('GMAPS_KEY', $acf_gmaps_key);
-	}
-	else {
-		define('GMAPS_KEY', '');
 	}
 }
 add_action('after_setup_theme', 'clientname_register_constants', 20);

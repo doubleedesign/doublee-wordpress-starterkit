@@ -31,7 +31,7 @@ class Starterkit_Theme_CMS_Utils {
             if($fonts) {
                 foreach ($fonts as $index => $font) {
                     $font_url = $font['url'];
-                    if(str_ends_with('.css', $font_url) || str_starts_with('https://fonts.googleapis.com', $font_url)) {
+                    if(!str_ends_with('.css', $font_url) || str_starts_with('https://fonts.googleapis.com', $font_url)) {
                         array_push($urls, array("theme-font-$index" => $font_url));
                     }
                     else {
