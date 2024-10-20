@@ -4,6 +4,3 @@
 [submodule "app/public/wp-content/plugins/doublee-breadcrumbs"]
 	path = app/public/wp-content/plugins/doublee-breadcrumbs
 	url = https://github.com/doubleedesign/doublee-breadcrumbs
-[submodule "app/public/wp-content/themes/starter-kit-blocks"]
-	path = app/public/wp-content/themes/starter-kit-blocks
-	url = https://github.com/doubleedesign/doublee-wp-theme-starter-kit-blocks
