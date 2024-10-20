@@ -2,12 +2,12 @@
 
 - [Prerequisites](#prerequisites)
 - [Common submodules](#common-submodules)
+- [Other required plugins](#other-required-plugins)
 - [Starterkits for individual sites](#starterkits-for-individual-sites)
 - [Initial setup](#initial-setup)
   - [Installing into fresh WordPress install](#installing-into-fresh-wordpress-install)
   - [Automated setup script](#automated-setup-script)
   - [General manual setup steps](#general-manual-setup-steps)
-  - [Theme setup steps](#theme-setup-steps)
 - [Development](#development)
     - [Multisite setup](#multisite-setup)
     - [Storybook](#storybook)
